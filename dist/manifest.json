@@ -55,38 +55,18 @@
       "description": "__MSG_highlightWithOrange__"
     },
     "highlight_custom_1": {
-      "suggested_key": {
-        "default": "Ctrl+Shift+5",
-        "mac": "Command+Shift+5"
-      },
       "description": "__MSG_highlightWithCustom1__"
     },
     "highlight_custom_2": {
-      "suggested_key": {
-        "default": "Ctrl+Shift+6",
-        "mac": "Command+Shift+6"
-      },
       "description": "__MSG_highlightWithCustom2__"
     },
     "highlight_custom_3": {
-      "suggested_key": {
-        "default": "Ctrl+Shift+7",
-        "mac": "Command+Shift+7"
-      },
       "description": "__MSG_highlightWithCustom3__"
     },
     "highlight_custom_4": {
-      "suggested_key": {
-        "default": "Ctrl+Shift+8",
-        "mac": "Command+Shift+8"
-      },
       "description": "__MSG_highlightWithCustom4__"
     },
     "highlight_custom_5": {
-      "suggested_key": {
-        "default": "Ctrl+Shift+9",
-        "mac": "Command+Shift+9"
-      },
       "description": "__MSG_highlightWithCustom5__"
     }
   },
@@ -117,6 +97,9 @@
         "pages-list.js",
         "shortcuts-settings.html",
         "shortcuts-settings.js",
+        "color-picker.html",
+        "color-picker.js",
+        "color-picker.css",
         "images/icon48.png"
       ],
       "matches": [

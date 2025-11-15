@@ -398,6 +398,28 @@ browserAPI.runtime.onMessage.addListener((message, _sender, sendResponse) => {
         return;
       }
 
+      // Handle customColorsUpdated request from color-picker.js
+      if (message.action === 'customColorsUpdated') {
+        // Reload custom colors from storage
+        await loadCustomColors();
+        
+        // Recreate context menus
+        await createOrUpdateContextMenus();
+        
+        // Broadcast updated colors to all tabs
+        const tabs = await browserAPI.tabs.query({});
+        for (const tab of tabs) {
+          try {
+            await browserAPI.tabs.sendMessage(tab.id, { action: 'colorsUpdated', colors: currentColors });
+          } catch (error) {
+            debugLog('Error broadcasting colors to tab:', tab.id, error);
+          }
+        }
+        
+        sendResponse({ success: true });
+        return;
+      }
+
       // Handle highlight information save request from content.js
       if (message.action === 'saveHighlights') {
         const tabs = await browserAPI.tabs.query({ active: true, currentWindow: true });

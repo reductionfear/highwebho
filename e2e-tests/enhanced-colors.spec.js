@@ -1,8 +1,5 @@
-const { test, expect } = require('@playwright/test');
-const { test: base } = require('./fixtures');
-const path = require('path');
-
-test.use(base);
+import { test, expect } from './fixtures.js';
+import path from 'path';
 
 test.describe('Enhanced Color Picker Tests', () => {
   

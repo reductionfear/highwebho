@@ -20,6 +20,9 @@ const filesToCopy = [
   'pages-list.js',
   'shortcuts-settings.html',
   'shortcuts-settings.js',
+  'color-picker.html',
+  'color-picker.js',
+  'color-picker.css',
   'constants.js',
   'controls.js'
 ];
