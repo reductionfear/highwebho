@@ -418,6 +418,33 @@ document.addEventListener('DOMContentLoaded', async function () {
     browserAPI.tabs.create({ url: 'shortcuts-settings.html' });
   });
 
+  // Manage custom colors button
+  document.getElementById('manage-custom-colors').addEventListener('click', () => {
+    const targetUrl = browserAPI.runtime.getURL('color-picker.html');
+    browserAPI.windows.getAll({populate: true}, function(windows) {
+      let found = false;
+      for (const win of windows) {
+        for (const tab of win.tabs) {
+          if (tab.url && tab.url.startsWith(targetUrl)) {
+            browserAPI.windows.update(win.id, {focused: true});
+            browserAPI.tabs.update(tab.id, {active: true});
+            found = true;
+            break;
+          }
+        }
+        if (found) break;
+      }
+      if (!found) {
+        browserAPI.windows.create({
+          url: targetUrl,
+          type: 'popup',
+          width: 1000,
+          height: 700
+        });
+      }
+    });
+  });
+
   // Initialization
   await loadHighlights();
   await loadMinimapSetting();

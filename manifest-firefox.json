@@ -119,6 +119,9 @@
         "pages-list.js",
         "shortcuts-settings.html",
         "shortcuts-settings.js",
+        "color-picker.html",
+        "color-picker.js",
+        "color-picker.css",
         "images/icon48.png"
       ],
       "matches": [
