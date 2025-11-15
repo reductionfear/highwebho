@@ -366,9 +366,20 @@ browserAPI.runtime.onMessage.addListener((message, _sender, sendResponse) => {
         // Check duplication by value
         const exists = [...currentColors, ...customColors].some(c => c.color.toLowerCase() === newColorValue.toLowerCase());
         if (!exists) {
-          // Calculate the next number for custom color naming
-          const existingCustomCount = currentColors.filter(c => c.id.startsWith('custom_')).length;
-          const colorNumber = existingCustomCount + 1;
+          // Find the smallest available color number
+          const existingNumbers = currentColors
+            .filter(c => c.id.startsWith('custom_'))
+            .map(c => c.colorNumber)
+            .sort((a, b) => a - b);
+          
+          let colorNumber = 1;
+          for (const num of existingNumbers) {
+            if (num === colorNumber) {
+              colorNumber++;
+            } else {
+              break;
+            }
+          }
           
           const newColorObj = {
             id: `custom_${Date.now()}`,
