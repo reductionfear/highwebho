@@ -218,4 +218,38 @@
     "message": "Highlight with Custom Color 5"
     "message": "키보드 단축키"
   }
+  },
+  "colorPickerTitle": {
+    "message": "Custom Color Picker"
+  },
+  "createCustomColor": {
+    "message": "Create Custom Color"
+  },
+  "redChannel": {
+    "message": "Red"
+  },
+  "greenChannel": {
+    "message": "Green"
+  },
+  "blueChannel": {
+    "message": "Blue"
+  },
+  "addColorButton": {
+    "message": "Add This Color"
+  },
+  "resetButton": {
+    "message": "Reset"
+  },
+  "savedCustomColors": {
+    "message": "Your Custom Colors"
+  },
+  "noCustomColorsYet": {
+    "message": "No custom colors saved yet. Create one using the controls on the left!"
+  },
+  "presetColors": {
+    "message": "Extreme Preset Colors"
+  },
+  "manageCustomColors": {
+    "message": "Manage Custom Colors"
+  }
 }

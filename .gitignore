@@ -5,3 +5,5 @@ outputs/
 test-results/
 .jest_cache/
 *.zip
+*.png
+color-picker-preview.html
