@@ -134,12 +134,43 @@ let currentCloseHandler = null;
 
 // 공통 색상 피커 UI 생성 함수
 function createColorPickerUI() {
-  // 색상 프리셋 배열
+  // 색상 프리셋 배열 - Organized by category
+  const colorCategories = {
+    metallic: [
+      '#FFD700', // Gold
+      '#C0C0C0', // Silver
+      '#CD7F32', // Bronze
+      '#B87333', // Copper
+      '#E5E4E2'  // Platinum
+    ],
+    superBright: [
+      '#FF0099', // Hot Pink
+      '#00FF00', // Lime Green
+      '#00FFFF', // Cyan
+      '#FF00FF', // Magenta
+      '#FFFF00'  // Yellow
+    ],
+    glow: [
+      '#39FF14', // Neon Green
+      '#FF073A', // Neon Red
+      '#FE4164', // Neon Pink
+      '#08F7FE', // Neon Blue
+      '#FFF01F'  // Neon Yellow
+    ],
+    standard: [
+      '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEAA7',
+      '#DDA0DD', '#98D8C8', '#F7DC6F', '#BB8FCE', '#85C1E9',
+      '#F39C12', '#E74C3C', '#9B59B6', '#3498DB', '#1ABC9C',
+      '#2ECC71', '#F1C40F', '#E67E22', '#FF90A0', '#A8E6CF'
+    ]
+  };
+  
+  // Flatten all colors for the grid
   const presetColors = [
-    '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEAA7',
-    '#DDA0DD', '#98D8C8', '#F7DC6F', '#BB8FCE', '#85C1E9',
-    '#F39C12', '#E74C3C', '#9B59B6', '#3498DB', '#1ABC9C',
-    '#2ECC71', '#F1C40F', '#E67E22', '#FF90A0', '#A8E6CF'
+    ...colorCategories.metallic,
+    ...colorCategories.superBright,
+    ...colorCategories.glow,
+    ...colorCategories.standard
   ];
   
   // 커스텀 색상 선택기 생성
@@ -156,9 +187,22 @@ function createColorPickerUI() {
   const presetGrid = document.createElement('div');
   presetGrid.className = 'color-preset-grid';
   
-  presetColors.forEach(color => {
+  presetColors.forEach((color, index) => {
     const colorDiv = document.createElement('div');
     colorDiv.className = 'color-preset';
+    
+    // Add special effects based on color category
+    if (index < 5) {
+      // Metallic colors
+      colorDiv.classList.add('metallic-effect');
+    } else if (index < 10) {
+      // Super bright colors
+      colorDiv.classList.add('bright-effect');
+    } else if (index < 15) {
+      // Glow colors
+      colorDiv.classList.add('glow-effect');
+    }
+    
     colorDiv.style.backgroundColor = color;
     colorDiv.dataset.color = color;
     presetGrid.appendChild(colorDiv);
