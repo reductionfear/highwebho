@@ -111,7 +111,17 @@ async function createOrUpdateContextMenus() {
   storedShortcuts = { ...commandShortcuts };
 
   for (const color of currentColors) {
-    const commandName = `highlight_${color.id}`;
+    let commandName = `highlight_${color.id}`;
+    
+    // Map custom colors to custom command slots
+    if (color.id.startsWith('custom_')) {
+      const customColors = currentColors.filter(c => c.id.startsWith('custom_'));
+      const customIndex = customColors.indexOf(color);
+      if (customIndex >= 0 && customIndex < 5) {
+        commandName = `highlight_custom_${customIndex + 1}`;
+      }
+    }
+    
     const shortcutDisplay = commandShortcuts[commandName] || '';
 
     // Generate title with number for custom colors
@@ -248,6 +258,19 @@ browserAPI.commands.onCommand.addListener(async (command) => {
         break;
       case 'highlight_orange':
         targetColor = currentColors.find(c => c.id === 'orange')?.color;
+        break;
+      case 'highlight_custom_1':
+      case 'highlight_custom_2':
+      case 'highlight_custom_3':
+      case 'highlight_custom_4':
+      case 'highlight_custom_5':
+        // Extract custom color slot number (1-5)
+        const slotNum = parseInt(command.replace('highlight_custom_', ''));
+        // Get custom colors (starting from index 5, after default colors)
+        const customColors = currentColors.filter(c => c.id.startsWith('custom_'));
+        if (customColors.length >= slotNum) {
+          targetColor = customColors[slotNum - 1]?.color;
+        }
         break;
     }
 

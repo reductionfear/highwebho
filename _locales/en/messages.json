@@ -202,5 +202,20 @@
   },
   "keyboardShortcuts": {
     "message": "Keyboard Shortcuts"
+  },
+  "highlightWithCustom1": {
+    "message": "Highlight with Custom Color 1"
+  },
+  "highlightWithCustom2": {
+    "message": "Highlight with Custom Color 2"
+  },
+  "highlightWithCustom3": {
+    "message": "Highlight with Custom Color 3"
+  },
+  "highlightWithCustom4": {
+    "message": "Highlight with Custom Color 4"
+  },
+  "highlightWithCustom5": {
+    "message": "Highlight with Custom Color 5"
   }
 }
