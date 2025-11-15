@@ -4,12 +4,21 @@ A cross-browser extension that allows you to highlight and manage text on web pa
 
 ## Features
 
-- Text Highlighting: Select and highlight text on web pages with multiple colors
-- Highlight Management: Manage and review highlighted text per page
-- Minimap: View highlighted positions at a glance with a minimap on the right side of the page
-- Multilingual Support: Available in English, Korean, Japanese, and Chinese
-- Cross-Browser Support: Works on both Chrome and Firefox
-- Keyboard Shortcuts: Quick highlighting with customizable keyboard shortcuts
+- **Text Highlighting**: Select and highlight text on web pages with multiple colors
+- **Enhanced Color Picker**: Choose from a rich palette including:
+  - Metallic colors (gold, silver, bronze, copper, platinum) with shine effects
+  - Super bright neon colors (hot pink, lime green, cyan, magenta, yellow)
+  - Glow colors (neon green, red, pink, blue, yellow) with fluorescent effects
+  - Standard color palette with 20 additional colors
+  - Custom HSV color picker for unlimited color options
+- **Keyboard Shortcuts**: Quick highlighting with customizable keyboard shortcuts
+  - Default colors: Ctrl+Shift+1-4 (Yellow, Green, Blue, Pink)
+  - Custom colors: Ctrl+Shift+5-9 (up to 5 custom colors)
+  - Fully customizable via browser's extension shortcuts settings
+- **Highlight Management**: Manage and review highlighted text per page
+- **Minimap**: View highlighted positions at a glance with a minimap on the right side of the page
+- **Multilingual Support**: Available in English, Korean, Japanese, and Chinese
+- **Cross-Browser Support**: Works on both Chrome and Firefox
 
 ## Getting Started
 
