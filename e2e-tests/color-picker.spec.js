@@ -80,4 +80,83 @@ test.describe('Color Picker Window Tests', () => {
     expect(greenValue).toBe('0');
     expect(blueValue).toBe('255');
   });
+
+  test('should reuse color numbers after deleting custom colors', async ({ page, extensionId, context }) => {
+    const colorPickerUrl = `chrome-extension://${extensionId}/color-picker.html`;
+    await page.goto(colorPickerUrl);
+    await page.waitForTimeout(500);
+
+    // Add first custom color (#FF0000 - Red)
+    await page.locator('#redSlider').fill('255');
+    await page.locator('#greenSlider').fill('0');
+    await page.locator('#blueSlider').fill('0');
+    await page.waitForTimeout(200);
+    await page.locator('#addColorBtn').click();
+    await page.waitForTimeout(500);
+
+    // Verify first color is added with number 1
+    let savedColors = await page.locator('.saved-color-item').all();
+    expect(savedColors.length).toBe(1);
+    let colorNumber = await page.locator('.saved-color-number').first().textContent();
+    expect(colorNumber).toBe('#1');
+
+    // Add second custom color (#00FF00 - Green)
+    await page.locator('#redSlider').fill('0');
+    await page.locator('#greenSlider').fill('255');
+    await page.locator('#blueSlider').fill('0');
+    await page.waitForTimeout(200);
+    await page.locator('#addColorBtn').click();
+    await page.waitForTimeout(500);
+
+    // Verify second color is added with number 2
+    savedColors = await page.locator('.saved-color-item').all();
+    expect(savedColors.length).toBe(2);
+    let colorNumbers = await page.locator('.saved-color-number').allTextContents();
+    expect(colorNumbers).toEqual(['#1', '#2']);
+
+    // Add third custom color (#0000FF - Blue)
+    await page.locator('#redSlider').fill('0');
+    await page.locator('#greenSlider').fill('0');
+    await page.locator('#blueSlider').fill('255');
+    await page.waitForTimeout(200);
+    await page.locator('#addColorBtn').click();
+    await page.waitForTimeout(500);
+
+    // Verify third color is added with number 3
+    savedColors = await page.locator('.saved-color-item').all();
+    expect(savedColors.length).toBe(3);
+    colorNumbers = await page.locator('.saved-color-number').allTextContents();
+    expect(colorNumbers).toEqual(['#1', '#2', '#3']);
+
+    // Delete the first custom color (number 1)
+    await page.locator('.saved-color-item').first().locator('.delete-saved-color').click();
+    await page.waitForTimeout(500);
+
+    // Verify first color is deleted, leaving colors 2 and 3
+    savedColors = await page.locator('.saved-color-item').all();
+    expect(savedColors.length).toBe(2);
+    colorNumbers = await page.locator('.saved-color-number').allTextContents();
+    expect(colorNumbers).toEqual(['#2', '#3']);
+
+    // Add a new color (#FFFF00 - Yellow)
+    await page.locator('#redSlider').fill('255');
+    await page.locator('#greenSlider').fill('255');
+    await page.locator('#blueSlider').fill('0');
+    await page.waitForTimeout(200);
+    await page.locator('#addColorBtn').click();
+    await page.waitForTimeout(500);
+
+    // Verify the new color reuses number 1 (the gap in the sequence)
+    savedColors = await page.locator('.saved-color-item').all();
+    expect(savedColors.length).toBe(3);
+    colorNumbers = await page.locator('.saved-color-number').allTextContents();
+    // The new color should get number 1, so we should have 2, 3, and 1
+    expect(colorNumbers.sort()).toEqual(['#1', '#2', '#3']);
+    
+    // Check that the newly added color (yellow) has number 1
+    const yellowColorItem = await page.locator('.saved-color-item').filter({ 
+      has: page.locator('.saved-color-number:text("#1")') 
+    });
+    await expect(yellowColorItem).toBeVisible();
+  });
 });
