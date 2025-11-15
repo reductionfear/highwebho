@@ -201,6 +201,21 @@
     "message": "현재 Chrome 버전은 프로그래밍 방식의 단축키 업데이트를 지원하지 않을 수 있습니다. chrome://extensions/shortcuts를 사용하여 단축키를 사용자 정의하세요."
   },
   "keyboardShortcuts": {
+  },
+  "highlightWithCustom1": {
+    "message": "Highlight with Custom Color 1"
+  },
+  "highlightWithCustom2": {
+    "message": "Highlight with Custom Color 2"
+  },
+  "highlightWithCustom3": {
+    "message": "Highlight with Custom Color 3"
+  },
+  "highlightWithCustom4": {
+    "message": "Highlight with Custom Color 4"
+  },
+  "highlightWithCustom5": {
+    "message": "Highlight with Custom Color 5"
     "message": "키보드 단축키"
   }
 }

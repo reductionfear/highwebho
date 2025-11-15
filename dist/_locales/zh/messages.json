@@ -201,6 +201,21 @@
     "message": "您的Chrome版本可能不支持程序化快捷键更新。请使用chrome://extensions/shortcuts自定义快捷键。"
   },
   "keyboardShortcuts": {
+  },
+  "highlightWithCustom1": {
+    "message": "Highlight with Custom Color 1"
+  },
+  "highlightWithCustom2": {
+    "message": "Highlight with Custom Color 2"
+  },
+  "highlightWithCustom3": {
+    "message": "Highlight with Custom Color 3"
+  },
+  "highlightWithCustom4": {
+    "message": "Highlight with Custom Color 4"
+  },
+  "highlightWithCustom5": {
+    "message": "Highlight with Custom Color 5"
     "message": "键盘快捷键"
   }
 }
